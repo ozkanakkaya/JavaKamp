@@ -88,3 +88,9 @@ local.properties
 # Typically, this file would be tracked if it contains build/dependency configurations:
 #.project
 .metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
+/.metadata/.plugins/com.genuitec.eclipse.devstyle
+/.metadata/.plugins/com.genuitec.eclipse.monitor
+/.metadata/.plugins/org.eclipse.core.resources
+/.metadata/.plugins/org.eclipse.core.runtime
+/.metadata/.plugins/org.eclipse.e4.workbench
+/.metadata/version.ini
