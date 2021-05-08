@@ -1,0 +1,6 @@
+package kodlamaIO;
+
+public class Category {
+	int categoryId;
+	String categoryName;
+}
