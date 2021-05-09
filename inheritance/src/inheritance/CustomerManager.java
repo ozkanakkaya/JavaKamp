@@ -5,4 +5,10 @@ public class CustomerManager {
 		System.out.println(customer.customerNumber + " kaydedildi.");
 	}
 	
+	public void addMultiple(Customer[] customer){
+		for (Customer customers : customer) {
+			System.out.println(customers.customerNumber + " addMultiple metodu ile kaydedildi");
+		}
+	}
+	
 }
