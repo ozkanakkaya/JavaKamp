@@ -94,3 +94,11 @@ local.properties
 /.metadata/.plugins/org.eclipse.core.runtime
 /.metadata/.plugins/org.eclipse.e4.workbench
 /.metadata/version.ini
+/.metadata/.plugins
+/.metadata/.plugins/org.eclipse.ui.workbench.texteditor
+/.metadata/.plugins/org.eclipse.ui.workbench
+/.metadata/.plugins/org.eclipse.ui.intro
+/.metadata/.plugins/org.eclipse.ui.ide
+/.metadata/.plugins/org.eclipse.oomph.setup
+/.metadata/.plugins/org.eclipse.oomph.setup
+/.metadata/.plugins/org.eclipse.m2e.logback.configuration
