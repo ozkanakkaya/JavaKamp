@@ -2,7 +2,9 @@ package entities;
 
 import java.time.LocalDate;
 
-public class Player {
+import abstracts.Entity;
+
+public class Player implements Entity {
 	private int id;
 	private String userName;
 	private String firstName;
