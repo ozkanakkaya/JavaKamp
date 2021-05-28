@@ -26,6 +26,7 @@ public class UserManager implements UserService {
 	public void register(User user) {
 		if (user.getPassword().length()<6) {
 			System.out.println("Þifreniz en az 6 karakterden oluþmalýdýr.");
+			return;
 		}
 		
 	    final String EMAIL_PATTERN = "^(.+)@(\\S+)$";
@@ -33,36 +34,47 @@ public class UserManager implements UserService {
 	    Matcher matcher = pattern.matcher(user.getEmail());
 	    if (!matcher.matches()) {
 			System.out.println(user.getEmail()+" e-mail adresi formatýna uygun deiðldir.");
+			return;
 		}
 	    
 	    for (User users : userDao.getAll()) {
 			if (users.getEmail().equals(user.getEmail())) {
 				System.out.println(user.getEmail()+" bu e-mail adresi sistemde mevcuttur.");
 			}
+			return;
 		}
 	    
 	    if (user.getFirstName().length()<2&&user.getLastName().length()<2) {
 			System.out.println("Ad ve Soyad en az 2 karakterden oluþmalýdýr.");
+			return;
 		}
+	    
+	    userDao.register(user);
 	    
 	}
 
 	@Override
-	public void login(User user) {
-		if (user.isVerify()) {
-			userDao.login(user);
-		}
-		else {
-			System.out.println("Giriþ baþarýsýz. E-mail adresinizi kontrol ediniz.");
+	public void login(String email, String password) {
+		
+		User userToLogin = userDao.getByEmailAndPassword(email, password);
+		
+		if(userToLogin == null) {
+			System.out.println("Giriþ baþarýsýz. E-posta adresiniz veya þifreniz yanlýþ.");
+			return;
 		}
 		
+		if(!userToLogin.isVerify()) {
+			System.out.println("Giriþ baþarýsýz. Üyeliðinizi doðrulamadýnýz.");
+			return;
+		}
+		
+		System.out.println("Giriþ baþarýlý! "+ userToLogin.getFirstName()+ " " + userToLogin.getLastName()+" Hoþgeldiniz.");
 	}
 
 	@Override
 	public void confirm(User user) {
 		if (user.isVerify()) {
 			userDao.confirm(user);
-			System.out.println(user.getFirstName()+" "+user.getLastName()+" e-mail adresiniz doðrulanmýþtýr.");
 
 		}else {
 			System.out.println(user.getFirstName()+" "+user.getLastName()+" e-mail adresiniz doðrulanmamýþtýr.");

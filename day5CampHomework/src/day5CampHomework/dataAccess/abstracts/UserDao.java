@@ -10,4 +10,6 @@ public interface UserDao {
 	void confirm(User user);
 	
 	List<User> getAll();
+	
+	User getByEmailAndPassword(String email, String password);
 }

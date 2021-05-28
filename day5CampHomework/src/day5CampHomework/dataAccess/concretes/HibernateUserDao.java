@@ -12,7 +12,7 @@ public class HibernateUserDao implements UserDao {
 	
 	@Override
 	public void register(User user) {
-		System.out.println(user.getFirstName()+" "+user.getLastName()+" baþarýlý bir þekilde kayýt oldunuz.");
+		System.out.println(user.getFirstName()+" "+user.getLastName()+" baþarýlý bir þekilde kayýt oldunuz. \nLütfen üyeliðinizi doðrulamak için e-mail adresinizi kontrol ediniz.");
 		users.add(user);
 	}
 
@@ -31,6 +31,15 @@ public class HibernateUserDao implements UserDao {
 	@Override
 	public List<User> getAll() {
 		return this.users;
+	}
+
+	@Override
+	public User getByEmailAndPassword(String email, String password) {
+		for(User user : users) {
+			if(user.getEmail() == email && user.getPassword() == password)
+				return user;
+		}
+		return null;
 	}
 
 }
