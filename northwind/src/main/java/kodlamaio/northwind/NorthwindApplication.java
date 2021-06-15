@@ -10,13 +10,13 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@EnableSwagger2
+@EnableSwagger2 // swagger i çalıştıran anatasyondur
 public class NorthwindApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(NorthwindApplication.class, args);
 	}
-	
+	//sistemdeki apileri bulur.
     @Bean//class gibidir
     public Docket api() { 
         return new Docket(DocumentationType.SWAGGER_2)  

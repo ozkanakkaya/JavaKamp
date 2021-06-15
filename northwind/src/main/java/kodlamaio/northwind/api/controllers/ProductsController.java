@@ -44,7 +44,8 @@ public class ProductsController {
 	public Result add(@RequestBody Product product) {
 		return this.productService.add(product);
 	}
-	
+	//@RequestBody = datadaki alanlar ile class daki ilgili alanları eşleştirir(map etme işlemi)
+	//@RequestParam anatasyonu ise, yazılmış olan @RequestBody içerisinde, productName'e denk gelen bilgiyi çek emrini vermiş oluyoruz.
 	@GetMapping("/getByProductName")
 	public DataResult<Product> getByProductName(@RequestParam String productName){
 		return this.productService.getByProductName(productName);

@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="categories")
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","products"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","products"})//*
 public class Category {
 	@Id
 	@Column(name="category_id")
@@ -31,3 +31,8 @@ public class Category {
 	@OneToMany(mappedBy="category")
 	private List<Product> products;
 }
+//*
+//@MappedBy anatasyonu uyguladığımız List<Product> products yapısının sürekli dönüp bir sonsuz döngü oluşturuyor.
+//Bunun önüne ise yandaki gibi bir @JsonIgnoreProperties anatasyonu eklenmesi gerekiyor.
+//Bu anatasyon doğru değer döndüren bir işlem olduğu taktirde döngüyü sonlandırıyor ve böylece sonsuz döngünün önüne geçilmiş olunuyor.
+//Yazmış olduğumuz @JsonIgnoreProperties içerisindeki "products" ise hangi veride bunun uygulanacağının bilgisidir.

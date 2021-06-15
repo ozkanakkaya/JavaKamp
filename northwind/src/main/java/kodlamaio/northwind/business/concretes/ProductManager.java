@@ -17,12 +17,12 @@ import kodlamaio.northwind.dataAccess.abstracts.ProductDao;
 import kodlamaio.northwind.entities.concretes.Product;
 import kodlamaio.northwind.entities.dtos.ProductWithCategoryDto;
 
-@Service
+@Service//Bütün bu projeyi Spring alt yapısıyla hazırladığımız için Spring tarafına bunun bir Service olduğunu anatasyon sayesinde belirtiyoruz.
 public class ProductManager implements ProductService {
 
 	private ProductDao productDao;
 
-	@Autowired
+	@Autowired//- Autowired ile Spring gidip arka planda buraya karşılık gelebilecek ProductDao türünde bir sınıf üretip onu veriyor. Fakat autowired kullanımı bir bağlılık oluşturuyor. Çok fazla SOLID kurallara uymasa da community tarafından kullanılıyor.
 	public ProductManager(ProductDao productDao) {
 		super();
 		this.productDao = productDao;
@@ -99,9 +99,12 @@ public class ProductManager implements ProductService {
 
 	@Override
 	public DataResult<List<Product>> getAllSorted() {
-		Sort sort=Sort.by(Sort.Direction.DESC,"productName");
-		return new SuccessDataResult<List<Product>> (this.productDao.findAll(sort),"Başarılı");
 		
+		Sort sort=Sort.by(Sort.Direction.DESC,"productName");
+		
+		return new SuccessDataResult<List<Product>> (this.productDao.findAll(sort),"Başarılı");
+		// Sort.Direction.DESC ile azalan şekilde olduğu bilgisini,
+		// "productName" ile de referans alması gereken veri adını yazıyoruz.
 	}
 
 	@Override
